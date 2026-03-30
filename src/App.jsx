@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import Home from './pages/Home';
 import Create from './pages/Create';
 import Learn from './pages/Learn';
+import LearnDetails from './pages/LearnDetails';
 import About from './pages/About';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/create" element={<Create />} />
                     <Route path="/learn" element={<Learn />} />
+                    <Route path="/learn/:id" element={<LearnDetails />} />
                     <Route path="/about" element={<About />} />
                 </Routes>
             </div>

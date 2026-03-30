@@ -1,12 +1,8 @@
 import React from 'react';
 import SpaceBackground from '../components/3d/SpaceBackground';
 import { FileText, Download, LayoutDashboard, Bookmark, Settings } from 'lucide-react';
-
-const dummyFiles = [
-    { id: 1, title: 'Вступ до React 19', description: 'Ознайомлення з новими хуками та фічами останньої версії.', size: '1.2 MB', date: 'Сьогодні' },
-    { id: 2, title: 'Three.js Основи', description: 'Як налаштувати Canvas та додати перші 3D об\'єкти.', size: '3.4 MB', date: 'Вчора' },
-    { id: 3, title: 'Анімації з Framer Motion', description: 'Практичний посібник для створення гладких інтерфейсів.', size: '840 KB', date: '3 дні тому' },
-];
+import { Link } from 'react-router-dom';
+import { learnMaterials } from '../data/learnMaterials';
 
 const Learn = () => {
     return (
@@ -51,8 +47,9 @@ const Learn = () => {
                         </div>
 
                         <div className="flex flex-col gap-4">
-                            {dummyFiles.map(file => (
-                                <div
+                            {learnMaterials.map(file => (
+                                <Link 
+                                    to={`/learn/${file.id}`}
                                     key={file.id}
                                     className="group flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all cursor-pointer"
                                 >
@@ -65,18 +62,18 @@ const Learn = () => {
                                             <p className="text-sm text-gray-400 mt-1">{file.description}</p>
                                         </div>
                                     </div>
-
+                                    
                                     <div className="flex items-center gap-6 w-full sm:w-auto justify-between sm:justify-end">
                                         <div className="flex sm:flex-col items-center sm:items-end gap-2 sm:gap-1 text-xs text-gray-500">
                                             <span>{file.size}</span>
                                             <span className="hidden sm:inline-block">•</span>
                                             <span>{file.date}</span>
                                         </div>
-                                        <button className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors" title="Завантажити">
+                                        <div className="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition-colors" title="Відкрити матеріал">
                                             <Download size={20} />
-                                        </button>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
